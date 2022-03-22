@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DiceActivity"></activity>
+        <activity android:name=".RandomNumActivity"></activity>
     </application>
 
 </manifest>

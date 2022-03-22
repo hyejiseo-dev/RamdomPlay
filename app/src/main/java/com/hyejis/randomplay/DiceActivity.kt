@@ -1,23 +1,28 @@
-package com.hyejis.dice
+package com.hyejis.randomplay
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.os.PersistableBundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.hyejis.dice.databinding.ActivityMainBinding
+import com.hyejis.randomplay.databinding.ActivityDiceBinding
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity() {
+class DiceActivity:AppCompatActivity(){
 
-    private lateinit var binding:ActivityMainBinding
+    private lateinit var binding: ActivityDiceBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setContentView(R.layout.activity_dice)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_dice)
 
         val diceImage1 = binding.dice1
         val diceImage2 = binding.dice2
+
+        //초기 화면
+        diceImage1.setImageResource(R.drawable.dice_1)
+        diceImage2.setImageResource(R.drawable.dice_1)
 
         binding.diceStartBtn.setOnClickListener {
 
@@ -45,8 +50,5 @@ class MainActivity : AppCompatActivity() {
             binding.diceSum.text = "총 합: "+(num1 + num2).toString()
         }
 
-
-        diceImage1.setImageResource(R.drawable.dice_1)
-        diceImage2.setImageResource(R.drawable.dice_2)
     }
 }

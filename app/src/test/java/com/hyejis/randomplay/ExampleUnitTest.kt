@@ -1,4 +1,4 @@
-package com.hyejis.dice
+package com.hyejis.randomplay
 
 import org.junit.Test
 
