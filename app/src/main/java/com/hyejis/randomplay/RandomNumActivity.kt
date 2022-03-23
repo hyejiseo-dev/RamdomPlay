@@ -13,7 +13,6 @@ class RandomNumActivity: AppCompatActivity(){
     private lateinit var binding: ActivityNumBinding
     var resultList = ArrayList<String>()
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,18 +29,18 @@ class RandomNumActivity: AppCompatActivity(){
                 val a = Integer.parseInt(startNum.toString())
                 val b = Integer.parseInt(endNum.toString())
                 val c = Integer.parseInt(countNum.toString())
-                val count = (b-a)+1
+                val count = (b-a)+1 //횟수 제한 비교를 위함
 
-                if(a < b && c <= count){
-                    val range = (a..b).random().toString()
+                if(a < b && c <= count){  //모든 값이 잘 입력되었을때
+                    val pickNum = (a..b).random().toString()
                     if(num <= c){
-                        if(!resultList.contains(range)){
-                            binding.tvResult.text = "$num 번째 당첨번호 : $range"
-                            resultList.add(range)
+                        if(!resultList.contains(pickNum)){
+                            binding.tvResult.text = "$num 번째 당첨번호 : $pickNum"
+                            resultList.add(pickNum)
                             binding.tvResultList.text = "지금까지 당첨된 번호: $resultList"
                             num++;
                         }else{
-                            Toast.makeText(this, "이미 뽑힘 : $range", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "이미 뽑힘 : $pickNum", Toast.LENGTH_SHORT).show()
                         }
                     }else{
                         Toast.makeText(this, "당첨이 끝났습니다! 축하해요~", Toast.LENGTH_SHORT).show()

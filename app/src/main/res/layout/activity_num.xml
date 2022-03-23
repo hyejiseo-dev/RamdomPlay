@@ -131,7 +131,7 @@
                 android:id="@+id/tvResultList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_margin="30dp"
                 android:text="지금까지 당첨된 번호 : "
                 android:textSize="20sp"
                 android:textStyle="bold"

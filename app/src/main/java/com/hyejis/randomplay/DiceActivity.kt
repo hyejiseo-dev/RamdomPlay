@@ -1,7 +1,6 @@
 package com.hyejis.randomplay
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.hyejis.randomplay.databinding.ActivityDiceBinding
