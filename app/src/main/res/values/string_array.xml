@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RandomPlay</string>
+
+    <string-array name="spinner_menu">
+        <item>한식</item>
+        <item>양식</item>
+        <item>일식</item>
+        <item>중식</item>
+        <item>디저트</item>
+        <item>야식</item>
+    </string-array>
+</resources>

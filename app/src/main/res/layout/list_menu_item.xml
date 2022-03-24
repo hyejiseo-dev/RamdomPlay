@@ -7,11 +7,11 @@
     android:layout_marginHorizontal="20dp"
     android:layout_gravity="center">
 
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn1"
+        android:id="@+id/state"
         android:text="메뉴1"
-        android:layout_margin="30dp"/>
+        android:layout_margin="10dp"/>
 
 </LinearLayout>

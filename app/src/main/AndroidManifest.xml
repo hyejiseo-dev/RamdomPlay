@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".DiceActivity"></activity>
         <activity android:name=".RandomNumActivity"></activity>
+        <activity android:name=".TodayEatActivity"></activity>
+        <activity android:name=".ChooseEatActivity"></activity>
     </application>
 
 </manifest>

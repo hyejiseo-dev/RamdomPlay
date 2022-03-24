@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btn3.setOnClickListener {
-            msgShow("3클릭..")
+            val nextIntent = Intent(this, TodayEatActivity::class.java)
+            startActivity(nextIntent)
         }
 
         binding.btn4.setOnClickListener {
