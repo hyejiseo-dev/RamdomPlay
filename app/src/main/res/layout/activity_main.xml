@@ -9,15 +9,27 @@
     android:gravity="center"
     tools:context=".MainActivity"
     android:layout_margin="20dp">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="메뉴선택"
-        android:textSize="24sp"
+        android:text="인생은 선택의 연속이지"
+        android:textColor="@color/black"
+        android:textSize="25sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="30dp"/>
+        android:gravity="center"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/choose"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_margin="20dp"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,19 +46,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn3"
-        android:text="제비뽑기"
+        android:text="식사 메뉴 정하기"
         android:layout_margin="10dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn4"
-        android:text="오늘 뭐먹지"
+        android:text="제비뽑기"
         android:layout_margin="10dp"/>
 
     <!--    <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:id="@+id/recyclerView"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"/>-->
+
 </LinearLayout>
+
+
 </layout>

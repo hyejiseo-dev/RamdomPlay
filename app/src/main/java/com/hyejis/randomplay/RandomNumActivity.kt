@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.hyejis.randomplay.databinding.ActivityNumBinding
 
@@ -35,6 +36,9 @@ class RandomNumActivity: AppCompatActivity(){
                     val pickNum = (a..b).random().toString()
                     if(num <= c){
                         if(!resultList.contains(pickNum)){
+                            binding.tvResult.isVisible = true
+                            binding.tvResultList.isVisible = true
+
                             binding.tvResult.text = "$num 번째 당첨번호 : $pickNum"
                             resultList.add(pickNum)
                             binding.tvResultList.text = "지금까지 당첨된 번호: $resultList"
@@ -44,8 +48,14 @@ class RandomNumActivity: AppCompatActivity(){
                         }
                     }else{
                         Toast.makeText(this, "당첨이 끝났습니다! 축하해요~", Toast.LENGTH_SHORT).show()
+                        binding.tvResultList.text = "당첨번호: $resultList"
                         num = 1
                         binding.applyBtn.isEnabled = false
+
+                        binding.linearLayout.isVisible = false
+                        binding.tvResult.isVisible = false
+
+                        binding.lottieView.isVisible = true
                     }
                 }else if(a >= b){ //시작이 더 클때
                     Toast.makeText(this, "시작번호는 끝번호보다 작아야 합니다", Toast.LENGTH_SHORT).show()
@@ -64,6 +74,11 @@ class RandomNumActivity: AppCompatActivity(){
             binding.tvResultList.text = "지금까지 당첨된 번호 : "
             num = 1
             binding.applyBtn.isEnabled = true
+
+            binding.linearLayout.isVisible = true
+            binding.tvResult.isVisible = true
+
+            binding.lottieView.isVisible = false
         }
 
         binding.tvResultList.movementMethod = ScrollingMovementMethod()
