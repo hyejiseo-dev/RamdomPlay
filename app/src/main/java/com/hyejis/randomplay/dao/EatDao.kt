@@ -2,6 +2,7 @@ package com.hyejis.randomplay.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.room.Dao
 import com.hyejis.randomplay.todayeat.EatList
 
 @Dao
@@ -12,12 +13,12 @@ interface EatDao {
     @Query("SELECT * FROM EatList WHERE category")
     fun getFoodCategory(): LiveData<List<EatList>>
 
-    @Insert
-    fun insert(eatList: EatList)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(eatList: EatList)
 
     @Update
     fun update(eatList: EatList)
 
     @Delete
-    fun delete(eatList: EatList)
+    suspend fun delete(eatList: EatList)
 }

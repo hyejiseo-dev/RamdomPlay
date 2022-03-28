@@ -1,5 +1,6 @@
 package com.hyejis.randomplay.todayeat
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hyejis.randomplay.R
 
-class EatItemAdapter(private val itemList : List<EatList>) : RecyclerView.Adapter<EatItemAdapter.ViewHolder>() {
+class EatItemAdapter internal constructor(context: Context) :
+    RecyclerView.Adapter<EatItemAdapter.ViewHolder>() {
 
     var datas = mutableListOf<EatList>()
 
     //lateinit 선언, 초기화 필요
-    private lateinit var itemClickListener : OnItemClickListener
+    private lateinit var itemClickListener: OnItemClickListener
+    var items = emptyList<EatList>() // Cached copy of words
 
     //ClickListener
     interface OnItemClickListener {
@@ -26,43 +29,56 @@ class EatItemAdapter(private val itemList : List<EatList>) : RecyclerView.Adapte
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_menu_item,parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.list_menu_item, parent, false)
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = datas.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = datas[position]
+        var safePosition = holder.adapterPosition
+        val current = items[safePosition]
+
+        holder.txtCategory.text = current.category
+        holder.txtName.text = current.food
+//        holder.delete.setOnClickListener {
+//            items.drop(position)
+//            notifyDataSetChanged()
+//        }
 
         // 아이템 클릭 동작을 반드시 추가해 줘야함 - setItemClickListener
         holder.itemView.setOnClickListener {
             itemClickListener?.onClick(it, position)
         }
 
-        holder.apply {
-            bind(item)
-        }
+//        holder.apply {
+//            bind(current)
+//        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val txtName: TextView = itemView.findViewById(R.id.item)
-        private val txtCategory: TextView = itemView.findViewById(R.id.category)
-        private val delete: ImageView = itemView.findViewById(R.id.delete_btn)
+        val txtName: TextView = itemView.findViewById(R.id.item)
+        val txtCategory: TextView = itemView.findViewById(R.id.category)
+        val delete: ImageView = itemView.findViewById(R.id.delete_btn)
 
-        fun bind(item: EatList) {
-            txtCategory.text = item.category
-            txtName.text = item.food
-            //삭제버튼
-            delete.setOnClickListener {
-                item.apply {
-                    datas.removeAt(adapterPosition)
-                    notifyDataSetChanged()
-                }
-            }
-        }
+//        fun bind(item: EatList) {
+////            txtCategory.text = item.category
+////            txtName.text = item.food
+//            //삭제버튼
+//            delete.setOnClickListener {
+//                item.apply {
+//                    datas.removeAt(adapterPosition)
+//                    notifyDataSetChanged()
+//                }
+//            }
+//        }
     }
 
+    override fun getItemCount(): Int = items.size
+
+    internal fun setItems(items: List<EatList>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
 
 }

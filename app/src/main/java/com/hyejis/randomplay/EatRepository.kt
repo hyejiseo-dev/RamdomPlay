@@ -1,26 +1,31 @@
 package com.hyejis.randomplay
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import com.hyejis.randomplay.dao.AppDatabase
 import com.hyejis.randomplay.dao.EatDao
 import com.hyejis.randomplay.todayeat.EatList
 
-class EatRepository(application: Application) {
-    private val eatDao: EatDao
-    private val eatList: LiveData<List<EatList>>
+class EatRepository(mDatabase: AppDatabase) {
 
-    init {
-        var db = AppDatabase.getInstance(application)
-        eatDao = db!!.eatDao()
-        eatList = db.eatDao().getAll()
+    private val eatDao = mDatabase.eatDao()
+    val allUsers: LiveData<List<EatList>> = eatDao.getAll()
+
+    companion object{
+        private var sInstance: EatRepository? = null
+        fun getInstance(database: AppDatabase): EatRepository {
+            return sInstance
+                ?: synchronized(this){
+                    val instance = EatRepository(database)
+                    sInstance = instance
+                    instance
+                }
+        }
     }
-
-    fun insert(eatList: EatList) {
+    suspend fun insert(eatList: EatList) {
         eatDao.insert(eatList)
     }
 
-    fun delete(eatList: EatList){
+    suspend fun delete(eatList: EatList) {
         eatDao.delete(eatList)
     }
 
