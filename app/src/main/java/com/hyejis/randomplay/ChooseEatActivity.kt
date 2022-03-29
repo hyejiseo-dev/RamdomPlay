@@ -1,5 +1,7 @@
 package com.hyejis.randomplay
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import com.hyejis.randomplay.utils.VerticalItemDecorator
 import android.os.Bundle
 import android.view.View
@@ -33,7 +35,7 @@ class ChooseEatActivity : AppCompatActivity() {
         binding.lifecycleOwner = this  //live data 사용할 때
 
         categories = intent.getStringExtra("category").toString()
-        binding.what.text = "오늘 먹을 $categories 메뉴는?"
+        binding.what.text = "오늘 먹을 "+"$categories"+ "메뉴는?"
 
         val mAdapter = EatItemAdapter(this)
         binding.eatList.apply {
@@ -73,15 +75,28 @@ class ChooseEatActivity : AppCompatActivity() {
         //아이템 클릭 동작
         mAdapter.setItemClickListener(object : EatItemAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
-                viewModel.delete(datas[position])
-                mAdapter.notifyDataSetChanged()
-                Toast.makeText(
-                    v.context,
-                    "$position 번째 메뉴 삭제!...",
-                    Toast.LENGTH_SHORT
-                ).show()
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this@ChooseEatActivity)
+                builder.setTitle("삭제")
+                builder.setMessage("메뉴룰 삭제 하시겠습니까?")
+
+                builder.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+                    viewModel.delete(datas[position])
+                    mAdapter.notifyDataSetChanged()
+                    builder.create().dismiss()
+                })
+
+                builder.setNegativeButton("취소", DialogInterface.OnClickListener { dialog, which ->
+                    builder.create().dismiss()
+                })
+                builder.show()
             }
         })
+
+        //음식 랜덤 뽑기
+        binding.replay.setOnClickListener {
+            binding.result.text = datas.random().food
+        }
+
     }
 
     //스와이프 시 삭제

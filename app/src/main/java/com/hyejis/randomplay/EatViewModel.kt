@@ -13,7 +13,7 @@ class EatViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = EatRepository(AppDatabase.getDatabase(application, viewModelScope))
     val items = repository.getAll()
 
-    var result: ObservableField<String> = ObservableField("Main")
+    var result: ObservableField<String> = ObservableField("결과")
     val mApplication = application
 
     class Factory(val application: Application) : ViewModelProvider.Factory {

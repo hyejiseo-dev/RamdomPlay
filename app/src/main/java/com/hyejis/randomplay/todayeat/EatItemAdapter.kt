@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -36,8 +35,17 @@ class EatItemAdapter internal constructor(context: Context) :
         var safePosition = holder.adapterPosition
         val current = items[safePosition]
 
-        holder.txtCategory.text = current.category
+      //  holder.imgCategory.setImageResource(R.drawable.dice_1)
         holder.txtName.text = current.food
+
+        when(current.category){
+            "한식" -> holder.imgCategory.setImageResource(R.drawable.korean_food)
+            "양식" -> holder.imgCategory.setImageResource(R.drawable.italian_food)
+            "일식" -> holder.imgCategory.setImageResource(R.drawable.japan_food)
+            "중식" -> holder.imgCategory.setImageResource(R.drawable.chinese_food)
+            "디저트" -> holder.imgCategory.setImageResource(R.drawable.dessert)
+            "야식" -> holder.imgCategory.setImageResource(R.drawable.chicken)
+        }
 
         // 아이템 클릭 동작을 반드시 추가해 줘야함 - setItemClickListener
         holder.delete.setOnClickListener {
@@ -52,20 +60,12 @@ class EatItemAdapter internal constructor(context: Context) :
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val txtName: TextView = itemView.findViewById(R.id.item)
-        val txtCategory: TextView = itemView.findViewById(R.id.category)
+        val imgCategory: ImageView = itemView.findViewById(R.id.category)
         val delete: ImageView = itemView.findViewById(R.id.delete_btn)
 
-//        fun bind(item: EatList) {
-////            txtCategory.text = item.category
-////            txtName.text = item.food
-//            //삭제버튼
-//            delete.setOnClickListener {
-//                item.apply {
-//                    datas.removeAt(adapterPosition)
-//                    notifyDataSetChanged()
-//                }
-//            }
-//        }
+        fun bind(item: EatList) {
+
+        }
     }
 
     override fun getItemCount(): Int = items.size

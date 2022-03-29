@@ -8,15 +8,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp">
 
-    <TextView
+    <ImageView
         android:id="@+id/category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="종류 : "
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        tools:ignore="MissingConstraints"/>
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_launcher_background"
+        android:transitionName="image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/item"
