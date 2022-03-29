@@ -34,6 +34,10 @@ class EatViewModel(application: Application) : AndroidViewModel(application) {
         return items
     }
 
+    fun getFoodCategory(category: String): LiveData<List<EatList>> {
+        return repository.getFoodCategory(category)
+    }
+
     fun onClickButton() {
         // TODO: Click 시 Room에 데이터를 가져와서 보여줌
         Toast.makeText(mApplication, "Click!", Toast.LENGTH_SHORT).show()

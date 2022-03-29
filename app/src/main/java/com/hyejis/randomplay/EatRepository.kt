@@ -2,7 +2,6 @@ package com.hyejis.randomplay
 
 import androidx.lifecycle.LiveData
 import com.hyejis.randomplay.dao.AppDatabase
-import com.hyejis.randomplay.dao.EatDao
 import com.hyejis.randomplay.todayeat.EatList
 
 class EatRepository(mDatabase: AppDatabase) {
@@ -32,4 +31,9 @@ class EatRepository(mDatabase: AppDatabase) {
     fun getAll(): LiveData<List<EatList>> {
         return eatDao.getAll()
     }
+
+    fun getFoodCategory(category: String): LiveData<List<EatList>> {
+        return eatDao.getFoodCategory(category)
+    }
+
 }

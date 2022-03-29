@@ -13,8 +13,6 @@ import com.hyejis.randomplay.R
 class EatItemAdapter internal constructor(context: Context) :
     RecyclerView.Adapter<EatItemAdapter.ViewHolder>() {
 
-    var datas = mutableListOf<EatList>()
-
     //lateinit 선언, 초기화 필요
     private lateinit var itemClickListener: OnItemClickListener
     var items = emptyList<EatList>() // Cached copy of words
@@ -40,13 +38,9 @@ class EatItemAdapter internal constructor(context: Context) :
 
         holder.txtCategory.text = current.category
         holder.txtName.text = current.food
-//        holder.delete.setOnClickListener {
-//            items.drop(position)
-//            notifyDataSetChanged()
-//        }
 
         // 아이템 클릭 동작을 반드시 추가해 줘야함 - setItemClickListener
-        holder.itemView.setOnClickListener {
+        holder.delete.setOnClickListener {
             itemClickListener?.onClick(it, position)
         }
 

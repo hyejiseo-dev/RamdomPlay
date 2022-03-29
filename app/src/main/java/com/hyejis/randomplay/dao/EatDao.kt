@@ -10,8 +10,8 @@ interface EatDao {
     @Query("SELECT * FROM EatList")
     fun getAll(): LiveData<List<EatList>>
 
-    @Query("SELECT * FROM EatList WHERE category")
-    fun getFoodCategory(): LiveData<List<EatList>>
+    @Query("SELECT * FROM EatList WHERE category = :category")
+    fun getFoodCategory(category: String): LiveData<List<EatList>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(eatList: EatList)
