@@ -38,7 +38,7 @@ class TodayEatActivity: AppCompatActivity() {
         binding.selectMenu.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if(position != 0)
-                    Toast.makeText(this@TodayEatActivity, foods[position], Toast.LENGTH_SHORT).show()
+                   // Toast.makeText(this@TodayEatActivity, foods[position], Toast.LENGTH_SHORT).show()
                     select = foods[position]
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {

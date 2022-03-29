@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RandomPlay</string>
+    <string name="app_name">뽑아봐</string>
 
     <string-array name="spinner_menu">
         <item>한식</item>

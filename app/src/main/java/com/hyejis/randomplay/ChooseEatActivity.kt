@@ -35,7 +35,7 @@ class ChooseEatActivity : AppCompatActivity() {
         binding.lifecycleOwner = this  //live data 사용할 때
 
         categories = intent.getStringExtra("category").toString()
-        binding.what.text = "오늘 먹을 "+"$categories"+ "메뉴는?"
+        binding.what.text = "오늘 먹을 $categories 메뉴는?"
 
         val mAdapter = EatItemAdapter(this)
         binding.eatList.apply {
@@ -48,6 +48,7 @@ class ChooseEatActivity : AppCompatActivity() {
             viewModel.getAll().observe(this, Observer { users ->
                 // Update the cached copy of the users in the adapter.
                 users?.let {
+                    binding.what.text = "오늘 먹을 메뉴는?"
                     mAdapter.setItems(it)
                     datas = users as MutableList<EatList>
                 }
