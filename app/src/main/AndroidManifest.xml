@@ -18,10 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DiceActivity"></activity>
-        <activity android:name=".RandomNumActivity"></activity>
-        <activity android:name=".TodayEatActivity"></activity>
-        <activity android:name=".ChooseEatActivity"></activity>
+        <activity android:name=".ui.DiceActivity"></activity>
+        <activity android:name=".ui.RandomNumActivity"></activity>
+        <activity android:name=".ui.TodayEatActivity"></activity>
+        <activity android:name=".ui.ChooseEatActivity"></activity>
     </application>
 
 </manifest>

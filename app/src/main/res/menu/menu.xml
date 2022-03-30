@@ -5,8 +5,8 @@
         android:title="Dice" />
     <item
         android:id="@+id/action_profile"
-        android:title="rate" />
+        android:title="RandomNum" />
     <item
         android:id="@+id/action_setting"
-        android:title="Setting" />
+        android:title="TodayEat" />
 </menu>

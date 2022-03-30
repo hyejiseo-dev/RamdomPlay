@@ -1,20 +1,24 @@
-package com.hyejis.randomplay
+package com.hyejis.randomplay.ui
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import com.hyejis.randomplay.utils.VerticalItemDecorator
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hyejis.randomplay.R
 import com.hyejis.randomplay.databinding.ActivityChooseEatBinding
 import com.hyejis.randomplay.todayeat.EatItemAdapter
 import com.hyejis.randomplay.todayeat.EatList
 import com.hyejis.randomplay.utils.HorizontalItemDecorator
+import com.hyejis.randomplay.viewmodel.EatViewModel
 
 class ChooseEatActivity : AppCompatActivity() {
 
@@ -98,6 +102,36 @@ class ChooseEatActivity : AppCompatActivity() {
             binding.result.text = datas.random().food
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    // actions on click menu items
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_search -> {
+            val nextIntent = Intent(this, DiceActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        R.id.action_profile -> {
+            val nextIntent = Intent(this, RandomNumActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        R.id.action_setting -> {
+            val nextIntent = Intent(this, TodayEatActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 
     //스와이프 시 삭제

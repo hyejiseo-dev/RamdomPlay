@@ -1,4 +1,4 @@
-package com.hyejis.randomplay
+package com.hyejis.randomplay.ui
 
 import android.app.Application
 import android.app.Dialog
@@ -9,11 +9,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.hyejis.randomplay.R
 import com.hyejis.randomplay.todayeat.EatList
+import com.hyejis.randomplay.viewmodel.EatViewModel
 import java.util.*
 
 class EatDialog(mContext: Context, categories: String) : Dialog(mContext) {
-    private val viewModel:EatViewModel = EatViewModel(mContext.applicationContext as Application)
+    private val viewModel: EatViewModel = EatViewModel(mContext.applicationContext as Application)
     val cur_category = categories
 
     override fun onCreate(savedInstanceState: Bundle?) {

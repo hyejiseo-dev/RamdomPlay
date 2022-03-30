@@ -1,10 +1,11 @@
-package com.hyejis.randomplay
+package com.hyejis.randomplay.viewmodel
 
 import android.app.Application
 import android.widget.Toast
 import androidx.databinding.ObservableField
 import androidx.lifecycle.*
 import com.hyejis.randomplay.dao.AppDatabase
+import com.hyejis.randomplay.repository.EatRepository
 import com.hyejis.randomplay.todayeat.EatList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

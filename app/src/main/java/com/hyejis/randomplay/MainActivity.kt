@@ -8,7 +8,9 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.hyejis.randomplay.databinding.ActivityMainBinding
-import kotlin.random.Random
+import com.hyejis.randomplay.ui.DiceActivity
+import com.hyejis.randomplay.ui.RandomNumActivity
+import com.hyejis.randomplay.ui.TodayEatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,14 +52,20 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_search -> {
             msgShow("Dice")
+            val nextIntent = Intent(this, DiceActivity::class.java)
+            startActivity(nextIntent)
             true
         }
         R.id.action_profile -> {
-            msgShow("Profile")
+            msgShow("RandomNum")
+            val nextIntent = Intent(this, RandomNumActivity::class.java)
+            startActivity(nextIntent)
             true
         }
         R.id.action_setting -> {
-            msgShow("Setting")
+            msgShow("TodayEat")
+            val nextIntent = Intent(this, TodayEatActivity::class.java)
+            startActivity(nextIntent)
             true
         }
         else -> {

@@ -1,8 +1,12 @@
-package com.hyejis.randomplay
+package com.hyejis.randomplay.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.hyejis.randomplay.R
 import com.hyejis.randomplay.databinding.ActivityDiceBinding
 import kotlin.random.Random
 
@@ -49,5 +53,35 @@ class DiceActivity:AppCompatActivity(){
             binding.diceSum.text = "총 합: "+(num1 + num2).toString()
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    // actions on click menu items
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_search -> {
+            val nextIntent = Intent(this, DiceActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        R.id.action_profile -> {
+            val nextIntent = Intent(this, RandomNumActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        R.id.action_setting -> {
+            val nextIntent = Intent(this, TodayEatActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 }

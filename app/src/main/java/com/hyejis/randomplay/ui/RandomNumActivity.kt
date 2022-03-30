@@ -1,13 +1,17 @@
-package com.hyejis.randomplay
+package com.hyejis.randomplay.ui
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import com.hyejis.randomplay.R
 import com.hyejis.randomplay.databinding.ActivityNumBinding
+import com.hyejis.randomplay.ui.DiceActivity
 
 class RandomNumActivity: AppCompatActivity(){
 
@@ -17,7 +21,7 @@ class RandomNumActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_num)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_num)
 
         var startNum = binding.etStart?.text
         var endNum = binding.etEnd?.text
@@ -84,4 +88,35 @@ class RandomNumActivity: AppCompatActivity(){
         binding.tvResultList.movementMethod = ScrollingMovementMethod()
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    // actions on click menu items
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_search -> {
+            val nextIntent = Intent(this, DiceActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        R.id.action_profile -> {
+            val nextIntent = Intent(this, RandomNumActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        R.id.action_setting -> {
+            val nextIntent = Intent(this, TodayEatActivity::class.java)
+            startActivity(nextIntent)
+            true
+        }
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
+    }
+
 }

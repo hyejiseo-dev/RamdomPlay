@@ -1,4 +1,4 @@
-package com.hyejis.randomplay
+package com.hyejis.randomplay.repository
 
 import androidx.lifecycle.LiveData
 import com.hyejis.randomplay.dao.AppDatabase

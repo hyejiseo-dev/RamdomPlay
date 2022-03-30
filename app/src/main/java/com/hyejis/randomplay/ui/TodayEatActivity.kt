@@ -1,16 +1,14 @@
-package com.hyejis.randomplay
+package com.hyejis.randomplay.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import com.hyejis.randomplay.R
 import com.hyejis.randomplay.databinding.ActivityEatMainBinding
-import com.hyejis.randomplay.databinding.ActivityNumBinding
 
 class TodayEatActivity: AppCompatActivity() {
 
@@ -19,7 +17,7 @@ class TodayEatActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_eat_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_eat_main)
 
         var foods = resources.getStringArray(R.array.spinner_menu)
         var select = foods[0]
